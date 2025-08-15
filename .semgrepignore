@@ -1,0 +1,23 @@
+:include .gitignore
+
+# Common test patterns, we don't want to alert on test files
+test/
+tests/
+*_test.go
+__test__/
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+
+# Ignore github workflows as they are internally facing
+.github/workflows
+
+# Semgrep rules folder
+.semgrep
+
+# Semgrep-action log folder
+.semgrep_logs/
+
+# Security has purposeful dangerious code in examples
+src/security/exampleexploits/
