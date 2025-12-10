@@ -6,3 +6,6 @@ case "$1" in
 esac
 mvn ${quiet} initialize
 mvn ${quiet} clean package cargo:run -Pdeploy
+
+mvn ${quiet} initialize
+mvn ${quiet} clean package cargo:run -Pdeploy
