@@ -23,6 +23,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.commons.io.FilenameUtils;
 
 @WebServlet(value = "/pathtraver-00/BenchmarkTest00619")
 public class BenchmarkTest00619 extends HttpServlet {
@@ -59,7 +60,8 @@ public class BenchmarkTest00619 extends HttpServlet {
 
         java.io.File fileTarget =
                 new java.io.File(
-                        new java.io.File(org.owasp.benchmark.helpers.Utils.TESTFILES_DIR), bar);
+                        new java.io.File(org.owasp.benchmark.helpers.Utils.TESTFILES_DIR),
+                        FilenameUtils.getName(bar));
         response.getWriter()
                 .println(
                         "Access to file: '"
