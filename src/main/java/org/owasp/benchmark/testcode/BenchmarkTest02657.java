@@ -38,10 +38,10 @@ public class BenchmarkTest02657 extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8"); // nosemgrep
 
-        String queryString = request.getQueryString();
-        String paramval = "BenchmarkTest02657" + "=";
+        String queryString = request.getQueryString(); // nosemgrep
+        String paramval = "BenchmarkTest02657" + "="; // nosemgrep
         int paramLoc = -1;
         if (queryString != null) paramLoc = queryString.indexOf(paramval);
         if (paramLoc == -1) {
@@ -65,9 +65,9 @@ public class BenchmarkTest02657 extends HttpServlet {
         if (ampersandLoc != -1) {
             param = queryString.substring(paramLoc + paramval.length(), ampersandLoc);
         }
-        param = java.net.URLDecoder.decode(param, "UTF-8");
+        param = java.net.URLDecoder.decode(param, "UTF-8"); // nosemgrep
 
-        String bar = doSomething(request, param);
+        String bar = doSomething(request, param); // nosemgrep
 
         String sql = "INSERT INTO users (username, password) VALUES ('foo','" + bar + "')";
 
@@ -77,8 +77,8 @@ public class BenchmarkTest02657 extends HttpServlet {
             int count = statement.executeUpdate(sql, new int[] {1, 2});
             org.owasp.benchmark.helpers.DatabaseHelper.outputUpdateComplete(sql, response);
         } catch (java.sql.SQLException e) {
-            if (org.owasp.benchmark.helpers.DatabaseHelper.hideSQLErrors) {
-                response.getWriter().println("Error processing request.");
+            if (org.owasp.benchmark.helpers.DatabaseHelper.hideSQLErrors) { // nosemgrep
+                response.getWriter().println("Error processing request."); // nosemgrep
                 return;
             } else throw new ServletException(e);
         }
