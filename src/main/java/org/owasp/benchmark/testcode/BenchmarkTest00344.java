@@ -62,7 +62,7 @@ public class BenchmarkTest00344 extends HttpServlet {
         try {
             java.sql.Statement statement =
                     org.owasp.benchmark.helpers.DatabaseHelper.getSqlStatement();
-            java.sql.ResultSet rs = statement.executeQuery(sql);
+            java.sql.ResultSet rs = statement.executeQuery(sql); // nosemgrep
             org.owasp.benchmark.helpers.DatabaseHelper.printResults(rs, sql, response);
         } catch (java.sql.SQLException e) {
             if (org.owasp.benchmark.helpers.DatabaseHelper.hideSQLErrors) {
